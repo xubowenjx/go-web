@@ -7,6 +7,7 @@
     />
     <link rel="stylesheet" href="https://unpkg.com/muse-ui/dist/muse-ui.css" />
     <script src="https://unpkg.com/muse-ui/dist/muse-ui.js"></script>
+    <script src="/static/js/http.js"></script>
     <title>user</title>
   </head>
   <body>
@@ -20,12 +21,22 @@
       </mu-appbar>
       <div>
         <mu-button href="/" color="primary">回到首页</mu-button>
+        <mu-button @click="click" color="secondary">测试post</mu-button>
       </div>
     </div>
   </body>
   <script>
     new Vue({
-      el: "#app"
+      el: "#app",
+      methods: {
+        click() {
+          http("/user", {
+            method: "post"
+          }).then(data => {
+            console.log(data);
+          });
+        }
+      }
     });
   </script>
 </html>
