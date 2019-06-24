@@ -21,7 +21,10 @@
       </mu-appbar>
       <div>
         <mu-button href="/" color="primary">回到首页</mu-button>
-        <mu-button @click="click" color="secondary">测试post</mu-button>
+        <mu-button @click="click('post')" color="secondary">测试post</mu-button>
+        <mu-button @click="click('delete')" color="secondary"
+          >测试delete</mu-button
+        >
       </div>
     </div>
   </body>
@@ -29,9 +32,9 @@
     new Vue({
       el: "#app",
       methods: {
-        click() {
-          http("/user", {
-            method: "post"
+        click(type) {
+          http("/user/110", type, {
+            content: "留言内容"
           }).then(data => {
             console.log(data);
           });
