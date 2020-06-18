@@ -1,12 +1,12 @@
 <html>
   <head>
-    <script src="https://unpkg.com/vue@2.6.10/dist/vue.js"></script>
-    <link
+    <script src="/static/js/vue.min.js"></script>
+    <!--  <link
       rel="stylesheet"
       href="https://cdn.bootcss.com/material-design-icons/3.0.1/iconfont/material-icons.css"
     />
     <link rel="stylesheet" href="https://unpkg.com/muse-ui/dist/muse-ui.css" />
-    <script src="https://unpkg.com/muse-ui/dist/muse-ui.js"></script>
+    <script src="https://unpkg.com/muse-ui/dist/muse-ui.js"></script> -->
     <script src="/static/js/http.js"></script>
     <title>user</title>
   </head>
@@ -21,7 +21,7 @@
       </mu-appbar>
       <div>
         <mu-button href="/" color="primary">回到首页</mu-button>
-        <mu-button @click="click('post')" color="secondary">测试post</mu-button>
+        <button @click="click('post')" color="secondary">测试post</button>
         <mu-button @click="click('delete')" color="secondary"
           >测试delete</mu-button
         >
@@ -31,11 +31,16 @@
   <script>
     new Vue({
       el: "#app",
+      data() {
+        return {
+          name: "xxxx"
+        };
+      },
       methods: {
         click(type) {
           http("/user/110", type, {
             content: "留言内容"
-          }).then(data => {
+          }).then((data) => {
             console.log(data);
           });
         }

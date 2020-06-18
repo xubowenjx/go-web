@@ -12,9 +12,10 @@ type UserController struct {
 }
 
 func (this *UserController) Get() {
-	this.Data["userName"] = "hello"
+	this.Data["UserName"] = "hello"
 	this.TplName = "user/index.tpl"
 }
+
 func (this *UserController) Post() {
 	id := this.Ctx.Input.Param(":id")
 	fmt.Println("id", id)
